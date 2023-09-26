@@ -1,5 +1,11 @@
 import React from 'react';
 import './business.css';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 const Business = ({
@@ -14,23 +20,31 @@ const Business = ({
   reviewCount,
 }) => {
   return (
-    <div className="business-card">
-      <div className="business-image">
-        <img src={image} alt={`${name} Image`} />
-      </div>
-      <div className="business-details">
-        <h2 className="business-name">{name}</h2>
-        <p className="business-address">
+
+    <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={image}
+          title="img title here"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          <p className="business-address">
           {address}, {city}, {state} {zipcode}
         </p>
-        <p className="business-category">{category}</p>
-        <div className="business-rating">
-          <p className="rating">{rating} stars</p>
-          <p className="review-count">{reviewCount} reviews</p>
-        </div>
-      </div>
-    </div>
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">btn1</Button>
+          <Button size="small"> btn2</Button>
+        </CardActions>
+      </Card>
+
   );
 };
 
 export default Business;
+

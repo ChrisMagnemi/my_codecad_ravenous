@@ -1,9 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Business from './components/business';
+import BusinessCard from './components/business';
 import Header from './components/header';
 import BusinessList from './components/businessList';
 import SearchBar from './components/searchBar'; // Import the SearchBar component
+import CssBaseline from '@mui/material/CssBaseline';
+import React from'react'
+import Container from '@mui/material/Container';
 
 const tempHeaderText = " default header"
 
@@ -49,13 +52,23 @@ function App() {
   return (
     <div className="App">
       <Header text={tempHeaderText} />
-      <Business {...businessData} />
+      <BusinessCard {...businessData} />
       <SearchBar
         onSearch={handleSearchSubmit}
         onLocationChange={handleSearchSubmit}
         onFilterChange={handleFilterChange}
       />
+
+<React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="md">
+
+
+
+      
       <BusinessList businesses={businesses} />
+      </Container>
+    </React.Fragment>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
