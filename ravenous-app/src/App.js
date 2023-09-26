@@ -3,6 +3,7 @@ import './App.css';
 import Business from './components/business';
 import Header from './components/header';
 import BusinessList from './components/businessList';
+import SearchBar from './components/searchBar'; // Import the SearchBar component
 
 const tempHeaderText = " default header"
 
@@ -33,11 +34,32 @@ const businesses = [ businessData,businessData1, businessData ]
 
 function App() {
 
+    // Callback functions for search and filter actions
+    const handleSearch = (businessTerm, locationTerm) => {
+      // Implement search logic here
+      console.log(`Searching for businesses: ${businessTerm}`);
+    };
+  
+    const handleLocationChange = (locationTerm, businessTerm) => {
+      // Implement location search logic here
+      console.log(`Searching by location: ${locationTerm}`);
+    };
+  
+    const handleFilterChange = (filterValue) => {
+      // Implement filter logic here
+      console.log(`Filtering by: ${filterValue}`);
+    };
+
 
   return (
     <div className="App">
       <Header text={tempHeaderText} />
       <Business {...businessData} />
+      <SearchBar
+        onSearch={handleSearch}
+        onLocationChange={handleLocationChange}
+        onFilterChange={handleFilterChange}
+      />
       <BusinessList businesses={businesses} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
