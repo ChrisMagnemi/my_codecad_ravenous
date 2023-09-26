@@ -34,21 +34,16 @@ const businesses = [ businessData,businessData1, businessData ]
 
 function App() {
 
-    // Callback functions for search and filter actions
-    const handleSearch = (businessTerm, locationTerm) => {
-      // Implement search logic here
-      console.log(`Searching for businesses: ${businessTerm}`);
-    };
-  
-    const handleLocationChange = (locationTerm, businessTerm) => {
-      // Implement location search logic here
-      console.log(`Searching by location: ${locationTerm}`);
-    };
-  
-    const handleFilterChange = (filterValue) => {
-      // Implement filter logic here
-      console.log(`Filtering by: ${filterValue}`);
-    };
+  const handleSearchSubmit = (businessTerm, locationTerm) => {
+    // Implement your search logic here
+    console.log(`Searching for businesses: ${businessTerm}`);
+    console.log(`Searching by location: ${locationTerm}`);
+  };
+
+  const handleFilterChange = (filterValue) => {
+    // Implement your filter logic here
+    console.log(`Filtering by: ${filterValue}`);
+  };
 
 
   return (
@@ -56,8 +51,8 @@ function App() {
       <Header text={tempHeaderText} />
       <Business {...businessData} />
       <SearchBar
-        onSearch={handleSearch}
-        onLocationChange={handleLocationChange}
+        onSearch={handleSearchSubmit}
+        onLocationChange={handleSearchSubmit}
         onFilterChange={handleFilterChange}
       />
       <BusinessList businesses={businesses} />
