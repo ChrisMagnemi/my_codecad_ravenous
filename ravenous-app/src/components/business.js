@@ -6,6 +6,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 
 const Business = ({
@@ -18,6 +22,7 @@ const Business = ({
   category,
   rating,
   reviewCount,
+  linkToBiz='default'
 }) => {
   return (
 
@@ -28,17 +33,18 @@ const Business = ({
           title="img title here"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" className='business-name'>
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-          <p className="business-address">
+          <Typography variant="body1" >
+            {category} | {rating} on {reviewCount} reviews
+          </Typography>
+          <Typography variant="body2" color="text.secondary" className='business-address'>
           {address}, {city}, {state} {zipcode}
-        </p>
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">btn1</Button>
+          <Button size="small"><a href='{linkToBiz}'>Open</a> </Button>
           <Button size="small"> btn2</Button>
         </CardActions>
       </Card>
