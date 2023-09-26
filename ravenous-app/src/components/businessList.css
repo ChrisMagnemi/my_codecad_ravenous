@@ -1,0 +1,20 @@
+/* BusinessList.css */
+
+.business-list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+/*
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between; /* This will create equal spacing between business components 
+  }
+  
+  /* @media (min-width: 368px) {
+    .business-list {
+      justify-content: flex-start; /* Reset the justify-content property for larger screens 
+    }
+  }
+   */

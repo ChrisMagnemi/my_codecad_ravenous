@@ -1,6 +1,6 @@
 /* Business Card Container */
 .business-card {
-    display: flex;
+    flex-grow: 3;
     border: 1px solid #ccc;
     margin: 16px;
     padding: 16px;

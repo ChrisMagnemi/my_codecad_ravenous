@@ -37,7 +37,7 @@ const businessData1 = {
   reviewCount: 420,
 };
 
-const businesses = [ businessData,businessData1, businessData ]
+const businesses = [ businessData, businessData1, businessData, businessData ]
 
 function App() {
 
@@ -56,23 +56,16 @@ function App() {
   return (
     <div className="App">
       <Header text={tempHeaderText} />
-      <BusinessCard {...businessData} />
+
       <SearchBar
         onSearch={handleSearchSubmit}
         onLocationChange={handleSearchSubmit}
         onFilterChange={handleFilterChange}
       />
 
-<React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="md">
-
-
-
-      
       <BusinessList businesses={businesses} />
-      </Container>
-    </React.Fragment>
+
+      {/* create-react-app boiler place stuff beloew */}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

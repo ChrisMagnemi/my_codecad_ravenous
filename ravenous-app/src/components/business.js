@@ -1,11 +1,5 @@
 import React from 'react';
 import './business.css';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -25,29 +19,22 @@ const Business = ({
   linkToBiz='default'
 }) => {
   return (
-
-    <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          sx={{ height: 140 }}
-          image={image}
-          title="img title here"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div" className='business-name'>
-            {name}
-          </Typography>
-          <Typography variant="body1" >
-            {category} | {rating} on {reviewCount} reviews
-          </Typography>
-          <Typography variant="body2" color="text.secondary" className='business-address'>
+    <div className="business-card">
+      <div className="business-image">
+        <img src={require('./PandaImg.jpg')} alt={`${name} Image`} />
+      </div>
+      <div className="business-details">
+        <h2 className="business-name">{name}</h2>
+        <p className="business-address">
           {address}, {city}, {state} {zipcode}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small"><a href='{linkToBiz}'>Open</a> </Button>
-          <Button size="small"> btn2</Button>
-        </CardActions>
-      </Card>
+        </p>
+        <p className="business-category">{category}</p>
+        <div className="business-rating">
+          <p className="rating">{rating} stars</p>
+          <p className="review-count">{reviewCount} reviews</p>
+        </div>
+      </div>
+    </div>
 
   );
 };
