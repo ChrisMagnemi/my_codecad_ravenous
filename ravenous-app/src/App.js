@@ -41,10 +41,8 @@ const businesses = [ businessData, businessData1, businessData, businessData ]
 
 function App() {
 
-  const handleSearchSubmit = (businessTerm, locationTerm) => {
-    // Implement your search logic here
-    console.log(`Searching for businesses: ${businessTerm}`);
-    console.log(`Searching by location: ${locationTerm}`);
+  const searchYelp = (term, location, sortBy) => {
+    console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
   };
 
   const handleFilterChange = (filterValue) => {
@@ -58,9 +56,7 @@ function App() {
       <Header text={tempHeaderText} />
 
       <SearchBar
-        onSearch={handleSearchSubmit}
-        onLocationChange={handleSearchSubmit}
-        onFilterChange={handleFilterChange}
+        searchYelp={searchYelp}
       />
 
       <BusinessList businesses={businesses} />
