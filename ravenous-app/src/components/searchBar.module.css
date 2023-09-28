@@ -34,8 +34,8 @@
   
   .SearchBarSortOptions li.active,
   .SearchBarSortOptions li.active:hover {
-    border-bottom: 1px solid #f0c36c;
-    color: #f0c36c;
+    border-bottom: 1px solid #088416;
+    color: #088416;
   }
   
   .SearchBarFields {

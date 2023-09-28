@@ -51,7 +51,6 @@ const SearchBar = ({ searchYelp }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    
     searchYelp(term, locationTerm, sortBy)
   };
 
