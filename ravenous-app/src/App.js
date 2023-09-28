@@ -11,6 +11,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import YelpBusinessSearch from './utils/yelpUtils';
 
 const tempHeaderText = " default header"
 
@@ -43,6 +44,7 @@ function App() {
 
   const searchYelp = (term, location, sortBy) => {
     console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
+    YelpBusinessSearch('sushi','nyc','best_match')
   };
 
   const handleFilterChange = (filterValue) => {

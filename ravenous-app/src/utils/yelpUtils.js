@@ -1,22 +1,42 @@
+async function YelpBusinessSearch(term, location, sortBy) {
+    try {
+      // Define the API URL you want to fetch data from
+      const baseUrl = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
+  
+      // Define your API key
+      const apiKey = '4u9Bie6XYil2dXFB6gr5Ndb25oZ747ogTNOfsDEwdCMPRRUZ7Dnl6PamOaypw_ZU-nVBPBOFfy3SR6fLCKZpnRl_gbKxeKUwYrcQuoY09psdSUQIfHt8O6bAn_4UZXYx';
+  
+      // Create headers with the API key
+      const headers = {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json', // Adjust as needed
+        'Access-Control-Allow-Origin': '*',
+      };
 
-const yelpClientID = 'ksCQnbI51Cr5WsCy5mIJ2g';
+      // Construct the complete API URL with the dynamic parameter
+      const apiUrl = `${baseUrl}?term=${term}&location=${location}&sortBy=${sortBy}`;
+  
+      // Use the fetch() function to make the API request with headers
+      const response = await fetch(apiUrl, {
+        method: 'GET', // Specify the HTTP method (GET, POST, etc.)
+        headers: headers, // Include the headers
+        redirect: 'follow'
+      });
 
-const yelpApiKey = '4u9Bie6XYil2dXFB6gr5Ndb25oZ747ogTNOfsDEwdCMPRRUZ7Dnl6PamOaypw_ZU-nVBPBOFfy3SR6fLCKZpnRl_gbKxeKUwYrcQuoY09psdSUQIfHt8O6bAn_4UZXYx';
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      // Parse the response body as JSON
+      const jsonResponse = await response.json();
+      console.log('yelp data:', jsonResponse);
+      return jsonResponse;
 
-async function yelpBusinessSearch() {
-    // const response = await fetch('https://api.yelp.com/v3/businesses/searchhttps://api.yelp.com/v3/businesses/search');
-    // const bizSearchData = await response.json();
-    // console.log(bizSearchData);
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
+  
 
-    // from yelp api reference
-    const sdk = require('api')('@yelp-developers/v1.0#z7c5z2vlkqskzd6');
-    sdk.auth(yelpApiKey);
-
-    sdk.v3_business_search({location: 'nyc', term: 'sushi', sort_by: 'best_match', limit: '20'})
-    .then(({ data }) => console.log(data))
-    .catch(err => console.error(err));
-}
-
-
-
-export default yelpBusinessSearch();
+export default YelpBusinessSearch;
