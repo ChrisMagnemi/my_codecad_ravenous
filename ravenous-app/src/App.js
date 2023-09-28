@@ -44,7 +44,9 @@ function App() {
 
   const searchYelp = (term, location, sortBy) => {
     console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
-    YelpBusinessSearch('sushi','nyc','best_match')
+    YelpBusinessSearch('sushi','nyc','best_match').then(businesses => {
+      console.log(businesses);
+    });
   };
 
   const handleFilterChange = (filterValue) => {

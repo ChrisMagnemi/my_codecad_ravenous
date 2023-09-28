@@ -29,8 +29,26 @@ async function YelpBusinessSearch(term, location, sortBy) {
   
       // Parse the response body as JSON
       const jsonResponse = await response.json();
-      console.log('yelp data:', jsonResponse);
-      return jsonResponse;
+
+      if (jsonResponse.businesses) {
+        return jsonResponse.businesses.map(business => ({
+          id: business.id,
+          imageSrc: business.image_url,
+          name: business.name,
+          address: business.location.address1,
+          city: business.location.city,
+          state: business.location.state,
+          zipCode: business.location.zip_code,
+          category: business.categories[0].title,
+          rating: business.rating,
+          reviewCount: business.review_count
+        }));
+      }
+
+
+
+      // console.log('yelp data:', jsonResponse);
+      // return jsonResponse;
 
     } catch (error) {
       console.error('Error:', error);
