@@ -1,12 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import BusinessCard from './components/business';
 import Header from './components/header';
 import BusinessList from './components/businessList';
 import SearchBar from './components/searchBar'; // Import the SearchBar component
-import CssBaseline from '@mui/material/CssBaseline';
 import React from'react'
-import Container from '@mui/material/Container';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';

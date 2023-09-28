@@ -44,12 +44,6 @@ async function YelpBusinessSearch(term, location, sortBy) {
           reviewCount: business.review_count
         }));
       }
-
-
-
-      // console.log('yelp data:', jsonResponse);
-      // return jsonResponse;
-
     } catch (error) {
       console.error('Error:', error);
       throw error;
