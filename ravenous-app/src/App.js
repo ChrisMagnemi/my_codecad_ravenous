@@ -40,48 +40,53 @@ const businessData1 = {
 
 const businesses = [ businessData, businessData1, businessData, businessData ]
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const searchYelp = (term, location, sortBy) => {
+    this.state = {
+      businesses: []
+    };
+
+    this.searchYelp = this.searchYelp.bind(this);
+  }
+
+  searchYelp = (term, location, sortBy) => {
     console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
     YelpBusinessSearch('sushi','nyc','best_match').then(businesses => {
-      console.log(businesses);
+      console.log(businesses[0]);
     });
   };
 
-  const handleFilterChange = (filterValue) => {
-    // Implement your filter logic here
-    console.log(`Filtering by: ${filterValue}`);
-  };
+  render(){
+    return (
+      <div className="App">
+        <Header text={tempHeaderText} />
 
+        <SearchBar
+          searchYelp={this.searchYelp}
+        />
 
-  return (
-    <div className="App">
-      <Header text={tempHeaderText} />
+        <BusinessList businesses={businesses} />
 
-      <SearchBar
-        searchYelp={searchYelp}
-      />
-
-      <BusinessList businesses={businesses} />
-
-      {/* create-react-app boiler place stuff beloew */}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        {/* create-react-app boiler place stuff beloew */}
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
