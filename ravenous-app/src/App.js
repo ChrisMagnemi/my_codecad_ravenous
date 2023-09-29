@@ -8,7 +8,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import YelpBusinessSearch from './utils/yelpUtils';
+import Yelp from './utils/yelpUtils';
 
 const tempHeaderText = " default header"
 
@@ -49,9 +49,10 @@ class App extends React.Component {
   }
 
   searchYelp = (term, location, sortBy) => {
-    console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
-    YelpBusinessSearch('sushi','nyc','best_match').then(businesses => {
-      console.log(businesses[0]);
+    console.log(`Searching Yelp with term: ${term}, location: ${location}, sortBy: ${sortBy}...`);
+    Yelp.search(term,location,sortBy).then(businesses => {
+      console.log("app.js - ", businesses);
+      this.setState({businesses: businesses});
     });
   };
 
@@ -67,7 +68,7 @@ class App extends React.Component {
         <BusinessList businesses={businesses} />
 
         {/* create-react-app boiler place stuff beloew */}
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -80,7 +81,7 @@ class App extends React.Component {
           >
             Learn React
           </a>
-        </header>
+        </header> */}
       </div>
     );
   }
