@@ -8,39 +8,66 @@ const sortByOptions = {
   "Most Reviewed": "review_count"
 };
 
-const SearchBar = ({ searchYelp }) => {
-  const [term, setTerm] = useState('');
-  const [locationTerm, setLocationTerm] = useState('');
-  const [sortBy, setSortBy] = useState("best_match")
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const handleSortByChange = (sortByOption) => {
-    setSortBy(sortByOption);
-  };
+    this.state = {
+      term: '',
+      location: '',
+      sortBy: 'best_match'
+    };
 
-  const handleTermChange = (e) => {
-    setTerm(e.target.value);
-  };
+    this.handleTermChange = this.handleTermChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSortByChange = this.handleSortByChange.bind(this);
 
-  const handleLocationChange = (e) => {
-    setLocationTerm(e.target.value);
-  };
+    this.sortByOptions = {
+      'Best Match': 'best_match',
+      'Highest Rated': 'rating',
+      'Most Reviewed': 'review_count'
+    };
+  
+  }
 
-  const getSortByClass = (sortByOption) => {
-    if (sortBy === sortByOption) {
+  getSortByClass = (sortByOption) => {
+    if (this.state.sortBy === sortByOption) {
       return styles.active;
     }
     return "";
   };
 
-  const renderSortingOptions = () => {
+  handleSortByChange = (sortByOption) => {
+    // setSortBy(sortByOption);
+    this.setState({sortBy: sortByOption});
+  };
+
+  handleTermChange = (e) => {
+    // setTerm(e.target.value);
+    this.setState({term: e.target.value});
+  };
+
+  handleLocationChange = (e) => {
+    // setLocationTerm(e.target.value);
+    this.setState({location: e.target.value});
+  };
+
+  handleSearch(event) {
+    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+
+    event.preventDefault();
+  }
+
+  renderSortingOptions = () => {
     return Object.keys(sortByOptions).map((sortByOption) => {
       let sortByOptionValue = sortByOptions[sortByOption];
       return (
         <li
-            className={getSortByClass(sortByOptionValue)}
+            className={this.getSortByClass(sortByOptionValue)}
             key={sortByOptionValue}
             onClick={ () => {
-              handleSortByChange(sortByOptionValue)
+              this.handleSortByChange(sortByOptionValue)
             } }
         >
           {sortByOption}
@@ -49,37 +76,47 @@ const SearchBar = ({ searchYelp }) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    searchYelp(term, locationTerm, sortBy)
-  };
-
-  return (
-    <div className="search-bar">
+  render() {
+    return(
+      <div className="search-bar">
       <div className={styles.SearchBarSortOptions}>
-        <ul> {renderSortingOptions()}</ul>
+        <ul> {this.renderSortingOptions()}</ul>
         
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.handleSearch}>
         <div className="search-inputs">
           <input 
             type="text"
             placeholder="Search businesses..."
             // value={businessTerm}
-            onChange={handleTermChange}
+            onChange={this.handleTermChange}
           />
           <input
             type="text"
             placeholder="Search by location..."
             // value={locationTerm}
-            onChange={handleLocationChange}
+            onChange={this.handleLocationChange}
           />
         </div>
         
         <button type="submit">Search</button>
-      </form>
+       </form>
     </div>
-  );
-};
+
+    )
+  }
+
+
+} // end SearchBar Component
+
+
+
+
+  // removed the submit button, thus don't need this code
+  // const handleSubmit = (e) => {
+  //   e.preventDefault(); // Prevent the default form submission behavior
+  //   searchYelp(term, locationTerm, sortBy)
+  // };
+
 
 export default SearchBar;
