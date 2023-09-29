@@ -12,30 +12,30 @@ import Yelp from './utils/yelpUtils';
 
 const tempHeaderText = " default header"
 
-const businessData = {
-  image: 'business-image-1.jpg',
-  name: 'BusinessData from js varaible',
-  address: '123 Main St',
-  city: 'Sample City',
-  state: 'Sample State',
-  zipcode: '12345',
-  category: 'Sample Category',
-  rating: 4.5,
-  reviewCount: 100,
-};
-const businessData1 = {
-  image: 'business-image-1.jpg',
-  name: '2nd business data variable',
-  address: '123 Main St',
-  city: 'Other City',
-  state: 'Other State',
-  zipcode: '12345',
-  category: 'Other Category',
-  rating: 4.4,
-  reviewCount: 420,
-};
+// const businessData = {
+//   image: 'business-image-1.jpg',
+//   name: 'BusinessData from js varaible',
+//   address: '123 Main St',
+//   city: 'Sample City',
+//   state: 'Sample State',
+//   zipcode: '12345',
+//   category: 'Sample Category',
+//   rating: 4.5,
+//   reviewCount: 100,
+// };
+// const businessData1 = {
+//   image: 'business-image-1.jpg',
+//   name: '2nd business data variable',
+//   address: '123 Main St',
+//   city: 'Other City',
+//   state: 'Other State',
+//   zipcode: '12345',
+//   category: 'Other Category',
+//   rating: 4.4,
+//   reviewCount: 420,
+// };
 
-const businesses = [ businessData, businessData1, businessData, businessData ]
+// const businesses = [ businessData, businessData1, businessData, businessData ]
 
 class App extends React.Component {
   constructor(props) {
@@ -65,7 +65,7 @@ class App extends React.Component {
           searchYelp={this.searchYelp}
         />
 
-        <BusinessList businesses={businesses} />
+        <BusinessList businesses={this.state.businesses} />
 
         {/* create-react-app boiler place stuff beloew */}
         {/* <header className="App-header">
